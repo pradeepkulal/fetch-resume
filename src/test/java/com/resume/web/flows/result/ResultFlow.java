@@ -1,4 +1,4 @@
-package com.naukri.web.flows.result;
+package com.resume.web.flows.result;
 
 import com.naukri.web.actions.result.ResultPage;
 import org.openqa.selenium.WebDriver;

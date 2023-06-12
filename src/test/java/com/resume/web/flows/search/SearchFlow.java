@@ -1,4 +1,4 @@
-package com.naukri.web.flows.search;
+package com.resume.web.flows.search;
 
 import com.naukri.web.actions.seacrh.SearchPage;
 import org.openqa.selenium.WebDriver;

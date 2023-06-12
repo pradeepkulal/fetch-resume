@@ -2,12 +2,12 @@
 <suite name="Script Execution Suite" parallel="tests">
     <test name="Script 1">
         <classes>
-            <class name="com.naukri.web.tests.Script1" />
+            <class name="com.resume.web.tests.Script1" />
         </classes>
     </test>
     <test name="Script 2">
         <classes>
-            <class name="com.naukri.web.tests.Script2" />
+            <class name="com.resume.web.tests.Script2" />
         </classes>
     </test>
 </suite>

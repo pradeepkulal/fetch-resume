@@ -1,4 +1,4 @@
-package com.naukri.web.flows.profile;
+package com.resume.web.flows.profile;
 
 import com.naukri.web.actions.profile.ProfilePage;
 import org.openqa.selenium.WebDriver;

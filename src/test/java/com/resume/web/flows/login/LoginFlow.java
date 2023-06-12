@@ -1,4 +1,4 @@
-package com.naukri.web.flows.login;
+package com.resume.web.flows.login;
 
 import com.naukri.web.actions.login.LoginPage;
 import org.openqa.selenium.WebDriver;

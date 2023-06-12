@@ -1,4 +1,4 @@
-package com.naukri.web.flows.home;
+package com.resume.web.flows.home;
 
 import com.naukri.web.actions.home.HomePage;
 import org.openqa.selenium.WebDriver;
