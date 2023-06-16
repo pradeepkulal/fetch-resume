@@ -20,7 +20,7 @@
         <allure-version>2.13.9</allure-version>
         <aspectj.version>1.9.2</aspectj.version>
         <surefire-version>2.22.2</surefire-version>
-        <selenium-webdriver-version>4.0.0</selenium-webdriver-version>
+        <selenium-webdriver-version>4.10.0</selenium-webdriver-version>
         <testNg-version>7.4.0</testNg-version>
         <webdriver-manager>3.8.1</webdriver-manager>
     </properties>
