@@ -44,7 +44,6 @@ public class Script1 {
         try {
             Thread.sleep(100000000);
         }catch (Exception e){
-
         }
     }
 }
