@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="NaukriProject" target="9" />
+      <module name="fetchResumeProject" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>
