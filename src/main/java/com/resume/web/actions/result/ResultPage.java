@@ -1,9 +1,10 @@
-package com.naukri.web.actions.result;
+package com.resume.web.actions.result;
 
-import com.naukri.dataSet.DataEntry;
-import com.naukri.lib.utils.Log;
-import com.naukri.web.locators.result.ResultLocators;
+
+import com.resume.web.locators.result.ResultLocators;
 import com.opencsv.CSVWriter;
+import com.resume.dataSet.DataEntry;
+import com.resume.lib.utils.Log;
 import org.openqa.selenium.WebDriver;
 
 import java.io.FileWriter;
@@ -14,7 +15,8 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.naukri.lib.support.TestData.convertListToCSVString;
+import static com.resume.lib.support.TestData.convertListToCSVString;
+
 
 public class ResultPage {
 
@@ -33,9 +35,9 @@ public class ResultPage {
     List<String> preferredLocationsList = new ArrayList<>();
     List<String> keySkillsList = new ArrayList<>();
     int sizeOfData;
-    Map<Integer, DataEntry> dataMap = new LinkedHashMap<>();
+    public static Map<Integer, DataEntry> dataMap = new LinkedHashMap<>();
     int totalSizeData;
-    Map<Integer, DataEntry> sortedData = new LinkedHashMap<>();
+    public static Map<Integer, DataEntry> sortedData = new LinkedHashMap<>();
 
 
     public ResultPage(WebDriver driver){
@@ -498,7 +500,9 @@ public class ResultPage {
             System.out.println(list.contains(value));
             z = list.indexOf(value);
             System.out.println(z);
-//            resultLocators.clickOnNameByIndex(z+1);
+            resultLocators.clickOnNameByIndex(z+1);
+        }else{
+            System.out.println("Not Found");
         }
     }
 }

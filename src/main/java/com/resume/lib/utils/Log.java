@@ -1,4 +1,4 @@
-package com.naukri.lib.utils;
+package com.resume.lib.utils;
 
 import org.apache.log4j.Logger;
 

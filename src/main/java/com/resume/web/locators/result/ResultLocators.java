@@ -1,8 +1,8 @@
-package com.naukri.web.locators.result;
+package com.resume.web.locators.result;
 
-import com.naukri.lib.base.CommonUiBase;
-import com.naukri.lib.base.GlobalConstant;
-import com.naukri.lib.utils.Log;
+import com.resume.lib.base.CommonUiBase;
+import com.resume.lib.base.GlobalConstant;
+import com.resume.lib.utils.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

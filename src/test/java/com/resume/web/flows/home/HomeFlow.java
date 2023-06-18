@@ -1,6 +1,6 @@
 package com.resume.web.flows.home;
 
-import com.naukri.web.actions.home.HomePage;
+import com.resume.web.actions.home.HomePage;
 import org.openqa.selenium.WebDriver;
 
 public class HomeFlow {

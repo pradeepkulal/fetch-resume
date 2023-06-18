@@ -1,6 +1,6 @@
 package com.resume.web.flows.login;
 
-import com.naukri.web.actions.login.LoginPage;
+import com.resume.web.actions.login.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 public class LoginFlow {

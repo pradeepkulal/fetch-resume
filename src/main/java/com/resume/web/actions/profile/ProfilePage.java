@@ -1,7 +1,6 @@
-package com.naukri.web.actions.profile;
+package com.resume.web.actions.profile;
 
-import com.naukri.lib.base.DriverManager;
-import com.naukri.web.locators.profile.ProfileLocators;
+import com.resume.web.locators.profile.ProfileLocators;
 import org.openqa.selenium.WebDriver;
 
 public class ProfilePage {
@@ -13,19 +12,14 @@ public class ProfilePage {
     }
 
     public String getEmail(){
+        profileLocators.switchToTab(1);
         return profileLocators.getEmail();
     }
 
-//    public void download(){
-//        String originalWindow = DriverManager.getDriver().getWindowHandle();
-//        for (String windowHandle : DriverManager.getDriver().getWindowHandles()) {
-//            if(!originalWindow.contentEquals(windowHandle)) {
-//                DriverManager.getDriver().switchTo().window(windowHandle);
-//                break;
-//            }
-//        }
-//        System.out.println(profileLocators.getEmail());
-//        profileLocators.clickOnAttachedCsvButton();
-//        profileLocators.clickOnDownloadCsvButton();
-//    }
+    public void download(){
+        profileLocators.clickOnAttachedCsvButton();
+        profileLocators.clickOnDownloadCsvButton();
+        profileLocators.switchToTab(0);
+        profileLocators.waitForSeconds(10);
+    }
 }

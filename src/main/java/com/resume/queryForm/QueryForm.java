@@ -1,12 +1,11 @@
-package com.naukri.queryForm;
+package com.resume.queryForm;
 
-import com.naukri.lib.utils.Log;
+import com.resume.lib.utils.Log;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;

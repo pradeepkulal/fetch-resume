@@ -1,4 +1,4 @@
-package com.naukri.lib.base;
+package com.resume.lib.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -100,6 +100,11 @@ public class UiBase{
         }catch (Exception e){
             return null;
         }
+    }
+
+    public void switchToTab(WebDriver driver , int index){
+        ArrayList<String> allTabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(allTabs.get(index));
     }
 
 

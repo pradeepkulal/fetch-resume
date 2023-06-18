@@ -1,8 +1,7 @@
-package com.naukri.web.locators.profile;
+package com.resume.web.locators.profile;
 
-import com.naukri.lib.base.CommonUiBase;
-import com.naukri.lib.base.DriverManager;
-import com.naukri.lib.base.GlobalConstant;
+import com.resume.lib.base.CommonUiBase;
+import com.resume.lib.base.GlobalConstant;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,5 +39,9 @@ public class ProfileLocators extends CommonUiBase {
     public void clickOnDownloadCsvButton(){
         awaitForElementToBeClickable(driver, downloadCSv, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         downloadCSv.click();
+    }
+
+    public void switchToTab(int index){
+        switchToTab(driver, index);
     }
 }

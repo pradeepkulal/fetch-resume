@@ -1,10 +1,7 @@
-package com.naukri.web.actions.login;
+package com.resume.web.actions.login;
 
-import com.naukri.web.locators.login.LoginLocators;
+import com.resume.web.locators.login.LoginLocators;
 import org.openqa.selenium.WebDriver;
-
-import static com.naukri.queryForm.QueryForm.email;
-import static com.naukri.queryForm.QueryForm.password;
 
 public class LoginPage {
 

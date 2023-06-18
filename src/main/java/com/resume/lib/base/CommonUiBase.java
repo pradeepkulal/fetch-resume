@@ -1,4 +1,4 @@
-package com.naukri.lib.base;
+package com.resume.lib.base;
 
 import java.util.HashMap;
 

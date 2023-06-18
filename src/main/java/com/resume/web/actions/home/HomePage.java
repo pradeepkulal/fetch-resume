@@ -1,9 +1,7 @@
-package com.naukri.web.actions.home;
+package com.resume.web.actions.home;
 
-import com.naukri.web.locators.home.HomeLocators;
+import com.resume.web.locators.home.HomeLocators;
 import org.openqa.selenium.WebDriver;
-
-import static com.naukri.lib.support.TestData.getRandomNumberLessThanGivenNumber;
 
 public class HomePage {
 

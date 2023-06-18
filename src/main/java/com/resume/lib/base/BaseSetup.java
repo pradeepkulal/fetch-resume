@@ -1,6 +1,6 @@
-package com.naukri.lib.base;
+package com.resume.lib.base;
 
-import com.naukri.queryForm.QueryForm;
+import com.resume.queryForm.QueryForm;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;

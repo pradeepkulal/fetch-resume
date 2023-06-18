@@ -1,9 +1,7 @@
 package com.resume.web.flows.result;
 
-import com.naukri.web.actions.result.ResultPage;
+import com.resume.web.actions.result.ResultPage;
 import org.openqa.selenium.WebDriver;
-
-import static com.naukri.queryForm.QueryForm.compareSkills;
 
 public class ResultFlow {
 
@@ -48,11 +46,11 @@ public class ResultFlow {
         resultPage.refreshPage();
         resultPage.get1234();
         resultPage.setDetails();
-        resultPage.getDetails();
+//        resultPage.getDetails();
         resultPage.assignRanking("git,c++,linux,oops,algorithms");
         resultPage.sortByRanking();
         resultPage.getDetailsAfterAssignRanking();
-        resultPage.filterRecordsByLocation();
+//        resultPage.filterRecordsByLocation();
     }
 
     public void get5(String name){

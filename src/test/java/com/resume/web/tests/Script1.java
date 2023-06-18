@@ -1,7 +1,7 @@
 package com.resume.web.tests;
 
-import com.naukri.lib.base.BaseConfig;
-import com.naukri.lib.base.DriverManager;
+import com.resume.lib.base.BaseConfig;
+import com.resume.lib.base.DriverManager;
 import com.resume.web.flows.home.HomeFlow;
 import com.resume.web.flows.login.LoginFlow;
 import com.resume.web.flows.profile.ProfileFlow;
@@ -23,7 +23,7 @@ public class Script1 {
     @BeforeClass
     public void initBaseFlow(){
         DriverManager driverManager = new DriverManager();
-        WebDriver driver = driverManager.initialize_driver("--user-data-dir=/Users/intuitiveapps/Library/Application Support/Google/Chrome/Default");
+        WebDriver driver = driverManager.initialize_driver("");
         driver.get(BaseConfig.getBaseUrl());
         driver.manage().window().maximize();
         loginFlow = new LoginFlow(driver);
@@ -41,6 +41,8 @@ public class Script1 {
         homeFlow.selectUsernameAndLogin();
         searchFlow.searchQuery3();
         resultFlow.get4();
+        homeFlow.gotoSearchResumes();
+        searchFlow.searchCandidates2();
         try {
             Thread.sleep(100000000);
         }catch (Exception e){

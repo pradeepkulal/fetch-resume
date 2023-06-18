@@ -1,6 +1,6 @@
-package com.naukri.web.actions.seacrh;
+package com.resume.web.actions.seacrh;
 
-import com.naukri.web.locators.search.SearchLocators;
+import com.resume.web.locators.search.SearchLocators;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;

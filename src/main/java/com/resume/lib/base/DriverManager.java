@@ -1,4 +1,4 @@
-package com.naukri.lib.base;
+package com.resume.lib.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -8,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DriverManager {
 
 
-    public WebDriver initialize_driver(String path){
-        WebDriver driver;
+    public ChromeDriver initialize_driver(String path){
+        ChromeDriver driver;
         WebDriverManager.chromedriver().setup();
         if(System.getProperty("os.name").contains("Linux")){
             ChromeOptions options = new ChromeOptions();
