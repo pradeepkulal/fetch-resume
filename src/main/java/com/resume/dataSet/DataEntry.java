@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain=true)
 public class DataEntry {
+
     private String name;
     private String experience;
     private String annualSalary;
@@ -22,4 +23,6 @@ public class DataEntry {
     private int ranking;
     private String email;
     private File resumeFile;
+    private String nameLink;
+
 }

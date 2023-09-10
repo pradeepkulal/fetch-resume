@@ -107,5 +107,9 @@ public class UiBase{
         driver.switchTo().window(allTabs.get(index));
     }
 
+    public void closeCurrentTab(WebDriver driver){
+        driver.close();
+    }
+
 
 }

@@ -36,8 +36,10 @@ public class ResultPage {
     List<String> keySkillsList = new ArrayList<>();
     int sizeOfData;
     public static Map<Integer, DataEntry> dataMap = new LinkedHashMap<>();
-    int totalSizeData;
+    public static int totalSizeData;
     public static Map<Integer, DataEntry> sortedData = new LinkedHashMap<>();
+
+    List<String> nameLinkList = new ArrayList<>();
 
 
     public ResultPage(WebDriver driver){
@@ -214,6 +216,7 @@ public class ResultPage {
             int value = k - 1;
             DataEntry entry = new DataEntry();
             entry.setName(namesList.get(value));
+            entry.setNameLink(nameLinkList.get(value));
             entry.setExperience(experienceList.get(value));
             entry.setAnnualSalary(annualSalaryList.get(value));
             entry.setCurrentLocation(currentLocationList.get(value));
@@ -458,6 +461,7 @@ public class ResultPage {
         for( int k = 0 ; k < 1 ; k ++) {
             numberOfDataShown();
             getNamesDetails();
+            getLinksDetails();
             getExperienceDetails();
             getAnnualSalaryDetails();
             getCurrentLocationDetails();
@@ -468,7 +472,7 @@ public class ResultPage {
             getEducationDetails();
             getPreferredLocationsDetails();
             getKeySkillsDetails();
-            resultLocators.clickOnNextPageButton();
+//            resultLocators.clickOnNextPageButton();
             resultLocators.waitForSeconds(5);
         }
     }
@@ -504,5 +508,33 @@ public class ResultPage {
         }else{
             System.out.println("Not Found");
         }
+    }
+
+    public int numberOfDataShownCount(){
+        sizeOfData = resultLocators.getTupleDataListCount();
+        totalSizeData += sizeOfData;
+        Log.info("totalSizeData : " +totalSizeData);
+        return totalSizeData;
+    }
+
+    public void clickOnNameByIndex(int count){
+        resultLocators.clickOnNameByIndex(count + 1);
+    }
+
+    public void getLinksDetails(){
+        Log.info("Name Link : ");
+        for ( int k = 1 ; k <= sizeOfData; k ++) {
+            List<String> dataList = resultLocators.getLink(k);
+            if(dataList.isEmpty()){
+                nameLinkList.add("");
+            }else {
+                nameLinkList.add(dataList.get(0));
+            }
+        }
+        Log.info("************************************");
+    }
+
+    public void navigateToUrlProfile(String url){
+        resultLocators.navigateToUrl(url);
     }
 }

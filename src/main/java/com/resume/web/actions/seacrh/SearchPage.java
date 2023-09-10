@@ -21,8 +21,9 @@ public class SearchPage {
                 searchLocators.enterSimpleSearch(keyword);
                 searchLocators.waitForSeconds(1);
             }
-            searchLocators.clickOnBodyHeader();
         }
+        searchLocators.waitForSeconds(5);
+        searchLocators.pressEscapeKeyAfterLocations();
     }
 
     public void useBooleanOn(){
@@ -76,6 +77,8 @@ public class SearchPage {
     public void enterSalaryRange(String minSalary , String maxSalary){
         searchLocators.enterMinSalary(minSalary);
         searchLocators.enterMaxSalary(maxSalary);
+        searchLocators.waitForSeconds(1);
+        searchLocators.pressEscapeKeyAfterLocations();
     }
 
     public void enterMinimumSalary(String minSalary){
@@ -108,7 +111,9 @@ public class SearchPage {
     }
 
     public void openDiversityDetails(){
+        searchLocators.waitForSeconds(5);
         searchLocators.clickOnDiversityDetails();
+        searchLocators.waitForSeconds(2);
     }
 
     public void enterCandidatesAge(String minAge , String maxAge){

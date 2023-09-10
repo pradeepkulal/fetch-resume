@@ -3,10 +3,12 @@ package com.resume.lib.support;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 public class TestData {
 
@@ -85,5 +87,23 @@ public class TestData {
     public static String getExactAnnualSalaryNumber(String input) {
         String[] parts = input.split(" ");
         return parts[1];
+    }
+
+    public static String getCurrentDate() {
+        ZoneId istZone = ZoneId.of("Asia/Kolkata");
+        ZonedDateTime istDateTime = ZonedDateTime.now(istZone);
+
+        // Extract the date part
+        LocalDate currentDate = istDateTime.toLocalDate();
+
+        // Create a custom date format
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH);
+
+        // Format the current date using the custom format
+        String formattedDate = currentDate.format(dateFormatter);
+
+
+        return formattedDate;
+
     }
 }

@@ -200,10 +200,23 @@ public class ResultLocators extends CommonUiBase {
 
     public void clickOnNameByIndex(int index){
         String path = "//div[@class='tuple on'][" + index + "]//div[contains(@class,'candidate-headline')]//a" ;
-        awaitElementAppearByXpath(driver, path , GlobalConstant.MAX_TIMEOUT_IN_SECONDS).click();
+        WebElement wb = awaitElementAppearByXpath(driver, path , GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        wb.click();
+    }
+
+    public List<String> getLink(int index){
+        String path = "//div[@class='tuple on'][" + index + "]//div[contains(@class,'candidate-headline')]//a" ;
+        List<WebElement> elementList = driver.findElements(By.xpath(path));
+        List<String> dataList = getListElementAttributeValue(elementList , "href");
+        Log.info(dataList);
+        return dataList;
     }
 
     public void refreshPage(){
         driver.navigate().refresh();
+    }
+
+    public void navigateToUrl(String url){
+        driver.navigate().to(url);
     }
 }

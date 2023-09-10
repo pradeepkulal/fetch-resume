@@ -26,6 +26,15 @@ public class ProfileLocators extends CommonUiBase {
     @FindBy(xpath = "//*[contains(@class,'icon-download')]")
     private WebElement downloadCSv;
 
+    @FindBy(xpath = "//button[contains(@class,'add-comm-btn')]")
+    private WebElement addComment;
+
+    @FindBy(xpath = "//div[contains(@class,'comments-editable')]")
+    private WebElement comment;
+
+    @FindBy(xpath = "//button[contains(@class,'comment-btn')]")
+    private WebElement post;
+
     public String getEmail(){
         awaitForElementPresence(driver, email, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         return email.getText();
@@ -44,4 +53,28 @@ public class ProfileLocators extends CommonUiBase {
     public void switchToTab(int index){
         switchToTab(driver, index);
     }
+
+    public void closeTab(){
+        closeCurrentTab(driver);
+    }
+
+    public void clickOnAddCommentButton(){
+        awaitForElementToBeClickable(driver, addComment, 2 * GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        addComment.click();
+    }
+
+    public void enterCommentText(String value){
+        awaitForElementPresence(driver, comment, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        comment.sendKeys(value);
+    }
+
+    public void clickOnPostButton(){
+        awaitForElementToBeClickable(driver, post, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        post.click();
+    }
+
+    public boolean checkAddCommentButton(){
+        return awaitForElementPresence(driver, addComment, 2 * GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+    }
+
 }

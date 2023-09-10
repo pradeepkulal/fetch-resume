@@ -20,13 +20,13 @@ public class LoginLocators extends CommonUiBase {
     @FindBy(xpath = "//*[@id='loginRegTab']")
     private WebElement loginRegTab;
 
-    @FindBy(xpath = "//input[@id='loginEmail']")
+    @FindBy(xpath = "//input[@name='username']")
     private WebElement inputEmail;
 
-    @FindBy(xpath = "//input[@id='password']")
+    @FindBy(xpath = "//input[@name='password']")
     private WebElement inputPassword;
 
-    @FindBy(xpath = "//button[@id='loginBtn']")
+    @FindBy(xpath = "//button[@type='submit']")
     private WebElement loginButton;
 
     public void clickOnLoginRegisterTab(){

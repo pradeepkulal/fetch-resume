@@ -36,6 +36,7 @@ public class Script2 {
         homeFlow = new HomeFlow(driver);
         searchFlow = new SearchFlow(driver);
         resultFlow = new ResultFlow(driver);
+        profileFlow = new ProfileFlow(driver);
     }
 
 
@@ -44,7 +45,6 @@ public class Script2 {
     public void tc2(){
         loginFlow.login("","");
         homeFlow.gotoSearchResumes();
-        searchFlow.searchCandidates();
         resultFlow.get5("");
         profileFlow.profileGet();
         try {

@@ -1,14 +1,13 @@
 package com.resume.web.flows.search;
 
 import com.resume.dataSet.DataEntry;
+import com.resume.lib.utils.Log;
 import com.resume.web.actions.result.ResultPage;
 import com.resume.web.actions.seacrh.SearchPage;
 import com.resume.web.flows.profile.ProfileFlow;
 import com.resume.web.flows.result.ResultFlow;
 import org.openqa.selenium.WebDriver;
 
-
-import javax.xml.crypto.Data;
 import java.io.File;
 import java.util.Map;
 
@@ -21,11 +20,13 @@ public class SearchFlow {
     SearchPage searchPage;
     ResultFlow resultFlow;
     ProfileFlow profileFlow;
+    ResultPage resultPage;
 
     public SearchFlow(WebDriver driver){
         searchPage = new SearchPage(driver);
         resultFlow = new ResultFlow(driver);
         profileFlow = new ProfileFlow(driver);
+        resultPage = new ResultPage(driver);
     }
 
     public void searchQuery(){
@@ -70,24 +71,18 @@ public class SearchFlow {
         searchPage.clickOnSearchCandidates();
     }
 
-    public void searchQuery3(){
-        searchPage.enterSimpleSearchQuery("c++,git,python");
-        searchPage.enterExperienceRange("3", "6");
-        searchPage.enterLocations("Gurugram,Bangalore,Noida");
+    public void searchQuery101()throws Exception{
+        searchPage.enterSimpleSearchQuery("data engineer,etl,fivetran,snowflake");
+        searchPage.checkedOnMarkMandatorySkills();
+        searchPage.enterExperienceRange("5", "8");
+        searchPage.enterLocations("Gurugram,Bangalore");
         searchPage.checkedOffIncludeCandidatesCheckbox();
-        searchPage.enterNoticePeriod("3 months,2 months");
+        searchPage.enterSalaryRange("10","18");
+        searchPage.enterNoticePeriod("15 days,1 month,Currently serving notice period");
         searchPage.openDiversityDetails();
+        Thread.sleep(10000);
         searchPage.selectAttachedResumes();
         searchPage.enterActiveIn("1 year");
-        searchPage.clickOnSearchCandidates();
-    }
-
-    public void searchCandidates(){
-        searchPage.enterMaximumExperience("6");
-        searchPage.enterLocations("Bangalore");
-        searchPage.enterMaximumSalary("21");
-        searchPage.openEmploymentDetails();
-        searchPage.enterCurrentDesignation("Member Technical Staff 3");
         searchPage.clickOnSearchCandidates();
     }
 
@@ -192,4 +187,46 @@ public class SearchFlow {
         searchPage.enterCurrentDesignation("R&D Senior Software Engineer");
         searchPage.clickOnSearchCandidates();
     }
+
+    public void get0102(){
+//        resultPage.gotoLastPaginationValue();
+        resultPage.refreshPage();
+        resultPage.get1234();
+        resultPage.setDetails();
+        resultPage.getDetails();
+//        resultPage.assignRanking("UipathOrchestrator,webdeveloper,RPA,Uipath,orchestrator,bot,RPALifeCycle,automatics,RpaAutomation," +
+//                "RPAUipath,RPADevelopment,RPATool,RPADeveloper,RoboticProcess,itautomation,botsdevelopment,metabots,automation,webautomation,windowsautomation,databaseautomation,roboticsprocessautomation,processautomation,roboticprocessautomation,RPAAutomationAnywhere");
+//        resultPage.assignRanking("azure databricks,azure data lake,azuresql,Azuredataengineer,sql,DataFactory,DeltaLake,AzureDataFactory,Azure data factory,Pyspark,databricks,azure,data engineer,DataFactory,Azure,Etl,AzureDatabricks,data bricks");
+//        resultPage.assignRanking("product owner,productowner,product manager,productmanger,requirement gathering,agile,scrum,requirement analysis,requirementanalysis,sdlc,product planning,productplanning,ProductManagement,Product Management,projectmanagement,project management");
+//        resultPage.assignRanking("asp.net,sql server,.net core,mvc,ssrs,asp.net mvc,.net,oracle,sql");
+        resultPage.assignRanking("Xamarin");
+//        resultPage.assignRanking("CRAM,Creditunderwriting,corporateloans,corporaterating,creditrating,creditassessment,creditanalysis,creditrisk,creditriskanalysis");
+//        resultPage.assignRanking("coreJava,springboot,SQL,j2ee,java");
+        resultPage.sortByRanking();
+        resultPage.getDetailsAfterAssignRanking();
+//        resultPage.filterRecordsByLocation();
+
+    }
+
+    public void get0103(){
+//        resultPage.filterRecordsByLocation();
+
+//
+//        for ( int k = 0 ; k < size ; k ++){
+//            Log.info("value of k : " + k);
+//            resultPage.clickOnNameByIndex(k);
+//            profileFlow.profileGet101();
+//        }
+        for (Map.Entry<Integer, DataEntry> entry : sortedData.entrySet()) {
+            int key = entry.getKey();
+            DataEntry dataEntry = entry.getValue();
+            if(dataEntry.getRanking()>=1){
+                resultPage.navigateToUrlProfile(dataEntry.getNameLink());
+                profileFlow.profileGet102();
+            }
+        }
+
+
+    }
+
 }

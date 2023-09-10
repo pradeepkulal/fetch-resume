@@ -25,4 +25,23 @@ public class ProfileFlow {
     public void profileGet(){
         profilePage.download();
     }
+
+    public void profileGet101(){
+        profilePage.switchToTab(1);
+        if(profilePage.checkAddComment()){
+            profilePage.addComment();
+            profilePage.download();
+        }else{
+            profilePage.goTo();
+        }
+    }
+
+    public void profileGet102(){
+        if(profilePage.checkAddComment()){
+            profilePage.addComment();
+            profilePage.download1();
+        }else{
+            System.out.println("Showing error on page");
+        }
+    }
 }

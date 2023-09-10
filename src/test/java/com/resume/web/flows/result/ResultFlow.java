@@ -1,14 +1,18 @@
 package com.resume.web.flows.result;
 
+import com.resume.lib.utils.Log;
 import com.resume.web.actions.result.ResultPage;
+import com.resume.web.flows.profile.ProfileFlow;
 import org.openqa.selenium.WebDriver;
 
 public class ResultFlow {
 
     ResultPage resultPage;
+    ProfileFlow profileFlow;
 
     public ResultFlow(WebDriver driver){
         resultPage = new ResultPage(driver);
+        profileFlow = new ProfileFlow(driver);
     }
 
     public void getData(){
@@ -57,5 +61,16 @@ public class ResultFlow {
         resultPage.gotoLastPaginationValue();
         resultPage.refreshPage();
         resultPage.verifyNameDetails(name);
+    }
+
+    public void get101(){
+//        resultPage.gotoLastPaginationValue();
+        resultPage.refreshPage();
+        int size = resultPage.numberOfDataShownCount();
+        for ( int k = 0 ; k < size ; k ++){
+            Log.info("value of k : " + k);
+            resultPage.clickOnNameByIndex(k);
+            profileFlow.profileGet101();
+        }
     }
 }

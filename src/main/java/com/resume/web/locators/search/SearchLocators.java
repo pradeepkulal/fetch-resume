@@ -161,6 +161,7 @@ public class SearchLocators extends CommonUiBase {
 
     public void clickOnEmploymentDetails(){
         awaitForElementToBeClickable(driver, employmentDetails, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        scrollToWebElement(driver, employmentDetails);
         employmentDetails.click();
     }
 
@@ -171,6 +172,7 @@ public class SearchLocators extends CommonUiBase {
 
     public void clickOnDiversityDetails(){
         awaitForElementToBeClickable(driver, diversityDetails, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        scrollToWebElement(driver, diversityDetails);
         diversityDetails.click();
     }
 
@@ -208,6 +210,7 @@ public class SearchLocators extends CommonUiBase {
 
     public void clickOnAttachedResumes(){
         awaitForElementPresence(driver, attachedResumes, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        scrollToWebElement(driver , attachedResumes);
         attachedResumes.click();
     }
 

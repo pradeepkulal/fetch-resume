@@ -8,10 +8,13 @@ import com.resume.web.flows.profile.ProfileFlow;
 import com.resume.web.flows.result.ResultFlow;
 import com.resume.web.flows.search.SearchFlow;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Script1 {
+
+    WebDriver driver;
 
     LoginFlow loginFlow;
     HomeFlow homeFlow;
@@ -23,7 +26,7 @@ public class Script1 {
     @BeforeClass
     public void initBaseFlow(){
         DriverManager driverManager = new DriverManager();
-        WebDriver driver = driverManager.initialize_driver("");
+        driver = driverManager.initialize_driver("--user-data-dir=/Users/intuitiveapps/Library/Application Support/Google/Chrome/Default");
         driver.get(BaseConfig.getBaseUrl());
         driver.manage().window().maximize();
         loginFlow = new LoginFlow(driver);
@@ -35,17 +38,22 @@ public class Script1 {
 
 
     @Test
-    public void tc1(){
+    public void tc1()throws Exception{
         loginFlow.login("","");
-        homeFlow.gotoSearchResumes();
-        homeFlow.selectUsernameAndLogin();
-        searchFlow.searchQuery3();
-        resultFlow.get4();
-        homeFlow.gotoSearchResumes();
-        searchFlow.searchCandidates2();
+        Thread.sleep(10000);
+        driver.get("https://resdex.naukri.com/v3");
+        searchFlow.searchQuery101();
+        Thread.sleep(60000);
+        searchFlow.get0102();
+        searchFlow.get0103();
         try {
             Thread.sleep(100000000);
         }catch (Exception e){
         }
+    }
+
+    @AfterClass
+    public void tearUp(){
+        driver.quit();
     }
 }
