@@ -158,6 +158,10 @@ public class QueryForm extends Application{
     }
 
     public static void launchForm(){
-        launch();
+        Application.launch();
+    }
+
+    public static void main(String[] args) {
+        launchForm();
     }
 }

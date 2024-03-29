@@ -10,8 +10,6 @@ import com.resume.web.flows.search.SearchFlow;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v112.network.Network;
-import org.openqa.selenium.devtools.v112.network.model.RequestId;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -24,12 +22,12 @@ public class Script2 {
     SearchFlow searchFlow;
     ResultFlow resultFlow;
     ProfileFlow profileFlow;
-    ChromeDriver driver;
+    WebDriver driver;
 
     @BeforeClass
     public void initBaseFlow(){
         DriverManager driverManager = new DriverManager();
-        driver = driverManager.initialize_driver("");
+        driver = driverManager.initialize_driver("--user-data-dir=/Users/intuitiveapps/Library/Application Support/Google/Chrome/Default");
         driver.get(BaseConfig.getBaseUrl());
         driver.manage().window().maximize();
         loginFlow = new LoginFlow(driver);
@@ -43,7 +41,7 @@ public class Script2 {
 
     @Test
     public void tc2(){
-        loginFlow.login("","");
+        loginFlow.login("swetha@intuitiveapps.com","Mar@2024");
         homeFlow.gotoSearchResumes();
         resultFlow.get5("");
         profileFlow.profileGet();

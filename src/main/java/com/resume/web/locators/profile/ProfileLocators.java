@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProfileLocators extends CommonUiBase {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public ProfileLocators(WebDriver driver){
         System.out.println(driver);

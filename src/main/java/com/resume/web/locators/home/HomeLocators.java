@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HomeLocators extends CommonUiBase {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public HomeLocators(WebDriver driver){
         System.out.println(driver);

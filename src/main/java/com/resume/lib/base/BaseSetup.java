@@ -1,9 +1,7 @@
 package com.resume.lib.base;
 
 import com.resume.queryForm.QueryForm;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseSetup {

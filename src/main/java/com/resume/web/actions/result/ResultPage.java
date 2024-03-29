@@ -34,6 +34,8 @@ public class ResultPage {
     List<String> educationList = new ArrayList<>();
     List<String> preferredLocationsList = new ArrayList<>();
     List<String> keySkillsList = new ArrayList<>();
+    List<String> prfileViewdList = new ArrayList<>();
+    List<String> commentAddedList = new ArrayList<>();
     int sizeOfData;
     public static Map<Integer, DataEntry> dataMap = new LinkedHashMap<>();
     public static int totalSizeData;
@@ -210,7 +212,26 @@ public class ResultPage {
         }
         Log.info("************************************");
     }
-
+    //
+    public void getIsProfileViewed(){
+        Log.info("ProfileViewed : ");
+        for ( int k = 1 ; k <= sizeOfData ; k ++){
+            boolean data = resultLocators.getisProfileViewed(k);
+            Log.info(data);
+            prfileViewdList.add(String.valueOf(data));
+        }
+        Log.info("************************************");
+    }
+    public void getIsCommentAdded(){
+        Log.info("Commented Added : ");
+        for ( int k = 1 ; k <= sizeOfData ; k ++){
+            boolean data = resultLocators.getIsCommentAdded(k);
+            Log.info(data);
+            commentAddedList.add(String.valueOf(data));
+        }
+        Log.info("************************************");
+    }
+//
     public void setDetails(){
         for ( int k = 1 ; k <= totalSizeData; k ++) {
             int value = k - 1;
@@ -228,7 +249,8 @@ public class ResultPage {
             entry.setPreferredLocations(preferredLocationsList.get(value));
             entry.setKeySkills(keySkillsList.get(value));
             entry.setRanking(0);
-
+            entry.setIsProfileViewed(prfileViewdList.get(value));
+            entry.setIsCommentAdded(commentAddedList.get(value));
             dataMap.put(k , entry);
         }
     }
@@ -458,7 +480,8 @@ public class ResultPage {
     }
 
     public void get1234(){
-        for( int k = 0 ; k < 1 ; k ++) {
+        System.out.println(resultLocators.extractLastPageNumber());
+        for( int k = 0 ; k < resultLocators.extractLastPageNumber() ; k ++) {
             numberOfDataShown();
             getNamesDetails();
             getLinksDetails();
@@ -472,7 +495,9 @@ public class ResultPage {
             getEducationDetails();
             getPreferredLocationsDetails();
             getKeySkillsDetails();
-//            resultLocators.clickOnNextPageButton();
+            getIsProfileViewed();
+            getIsCommentAdded();
+            resultLocators.clickOnNextPageButton();
             resultLocators.waitForSeconds(5);
         }
     }

@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ResultLocators extends CommonUiBase {
 
@@ -29,7 +31,7 @@ public class ResultLocators extends CommonUiBase {
     @FindBy(xpath = "//div[contains(@class,'candidate-headline')]//a//span")
     private List<WebElement> candidatesNameList;
 
-    @FindBy(xpath = "//button[@data-testid='next-page']")
+        @FindBy(xpath = "//button[@data-testid='next-page']")
     private WebElement nextPageButton;
 
     @FindBy(xpath = "//span[@class='key-skills']")
@@ -56,6 +58,8 @@ public class ResultLocators extends CommonUiBase {
     @FindBy(xpath = "//div[@class='tuple on']//div[@class='education']")
     private List<WebElement> educationList;
 
+    @FindBy(xpath = "//span[@class='page-no_page-value__ZEitC']")
+    private WebElement lastPageValue;
     public String getTotalProfilesCount(){
         awaitForElementPresence(driver, totalProfilesCount, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         return totalProfilesCount.getText();
@@ -72,8 +76,13 @@ public class ResultLocators extends CommonUiBase {
     }
 
     public void clickOnNextPageButton(){
-        awaitForElementToBeClickable(driver, nextPageButton, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
-        nextPageButton.click();
+        try {
+            awaitForElementToBeClickable(driver, nextPageButton, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+            nextPageButton.click();
+        } catch (Exception e) {
+
+        }
+
     }
 
     public List<String> getCandidatesDetailsList(){
@@ -197,7 +206,34 @@ public class ResultLocators extends CommonUiBase {
         List<WebElement> elementList = driver.findElements(By.xpath(path));
         return elementList.get(0).getText();
     }
+    public boolean getisProfileViewed(int index){
+        String path = "//div[@class='tuple on'][" + index + "]//p" ;
+        List<WebElement> elementList = driver.findElements(By.xpath(path));
+        // Check each element in the list
+        for (WebElement element : elementList) {
+            if (element.isDisplayed()) {
+                return true;  // If any element is displayed, return true
+            }
+        }
 
+        // If none of the elements are displayed, return false
+        return false;
+    }
+    //
+    public boolean getIsCommentAdded(int index){
+        String path = "//div[@class='tuple on'][" + index + "]//button[text()='1 Comment']" ;
+        List<WebElement> elementList = driver.findElements(By.xpath(path));
+        // Check each element in the list
+        for (WebElement element : elementList) {
+            if (element.isDisplayed()) {
+                return true;  // If any element is displayed, return true
+            }
+        }
+
+        // If none of the elements are displayed, return false
+        return false;
+    }
+//
     public void clickOnNameByIndex(int index){
         String path = "//div[@class='tuple on'][" + index + "]//div[contains(@class,'candidate-headline')]//a" ;
         WebElement wb = awaitElementAppearByXpath(driver, path , GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
@@ -219,4 +255,21 @@ public class ResultLocators extends CommonUiBase {
     public void navigateToUrl(String url){
         driver.navigate().to(url);
     }
+
+    public int extractLastPageNumber(){
+        String text=lastPageValue.getText();
+        // Regular expression pattern to match integers
+        Pattern pattern = Pattern.compile("\\d+$");
+        Matcher matcher = pattern.matcher(text);
+
+        // Find the first occurrence of an integer in the string
+        if (matcher.find()) {
+            // Convert the matched string to an integer
+            return Integer.parseInt(matcher.group());
+        }
+
+        // Return -1 if no integer is found
+        return -1;
+    }
+
 }

@@ -20,7 +20,7 @@ public class SearchPage {
             for (String keyword : queryList) {
                 searchLocators.enterSimpleSearch(keyword);
                 searchLocators.waitForSeconds(1);
-            }
+                }
         }
         searchLocators.waitForSeconds(5);
         searchLocators.pressEscapeKeyAfterLocations();
@@ -71,6 +71,7 @@ public class SearchPage {
     }
 
     public void checkedOffIncludeCandidatesCheckbox(){
+        searchLocators.scrollWebpagBy("0","200");
         searchLocators.clickOnIncludeCandidatesCheckbox();
     }
 

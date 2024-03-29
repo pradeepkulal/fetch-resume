@@ -6,10 +6,15 @@ import com.resume.web.actions.result.ResultPage;
 import com.resume.web.actions.seacrh.SearchPage;
 import com.resume.web.flows.profile.ProfileFlow;
 import com.resume.web.flows.result.ResultFlow;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
+import java.util.Properties;
 
 import static com.resume.lib.support.TestData.*;
 import static com.resume.queryForm.QueryForm.*;
@@ -27,6 +32,17 @@ public class SearchFlow {
         resultFlow = new ResultFlow(driver);
         profileFlow = new ProfileFlow(driver);
         resultPage = new ResultPage(driver);
+    }
+    Properties props=new Properties();
+    FileReader reader;
+
+    {
+        try {
+            reader = new FileReader("C:\\Users\\Intuitiveapps\\OneDrive\\KYCEE TestCases\\fetch_resume\\src\\main\\resources\\TestData.properties");
+            props.load(reader);
+        } catch (IOException e) {
+           System.out.println("Properties File not Found");
+        }
     }
 
     public void searchQuery(){
@@ -72,13 +88,14 @@ public class SearchFlow {
     }
 
     public void searchQuery101()throws Exception{
-        searchPage.enterSimpleSearchQuery("data engineer,etl,fivetran,snowflake");
-        searchPage.checkedOnMarkMandatorySkills();
-        searchPage.enterExperienceRange("5", "8");
-        searchPage.enterLocations("Gurugram,Bangalore");
+
+            searchPage.enterSimpleSearchQuery(props.getProperty("enterSimpleSearchQuery"));
+      //  searchPage.checkedOnMarkMandatorySkills();
+        searchPage.enterExperienceRange("1", "5");
+        searchPage.enterLocations(props.getProperty("enterLocations"));
         searchPage.checkedOffIncludeCandidatesCheckbox();
-        searchPage.enterSalaryRange("10","18");
-        searchPage.enterNoticePeriod("15 days,1 month,Currently serving notice period");
+        searchPage.enterSalaryRange("1","18");
+        searchPage.enterNoticePeriod("15 days,1 month,Currently serving notice period,3 months");
         searchPage.openDiversityDetails();
         Thread.sleep(10000);
         searchPage.selectAttachedResumes();
@@ -86,7 +103,7 @@ public class SearchFlow {
         searchPage.clickOnSearchCandidates();
     }
 
-    public void searchCandidates2(){
+    public  void searchCandidates2(){
         int z = 0;
         for (Map.Entry<Integer, DataEntry> entry : sortedData.entrySet()) {
             int key = entry.getKey();
@@ -189,7 +206,7 @@ public class SearchFlow {
     }
 
     public void get0102(){
-//        resultPage.gotoLastPaginationValue();
+        resultPage.gotoLastPaginationValue();
         resultPage.refreshPage();
         resultPage.get1234();
         resultPage.setDetails();
@@ -199,7 +216,7 @@ public class SearchFlow {
 //        resultPage.assignRanking("azure databricks,azure data lake,azuresql,Azuredataengineer,sql,DataFactory,DeltaLake,AzureDataFactory,Azure data factory,Pyspark,databricks,azure,data engineer,DataFactory,Azure,Etl,AzureDatabricks,data bricks");
 //        resultPage.assignRanking("product owner,productowner,product manager,productmanger,requirement gathering,agile,scrum,requirement analysis,requirementanalysis,sdlc,product planning,productplanning,ProductManagement,Product Management,projectmanagement,project management");
 //        resultPage.assignRanking("asp.net,sql server,.net core,mvc,ssrs,asp.net mvc,.net,oracle,sql");
-        resultPage.assignRanking("Xamarin");
+        resultPage.assignRanking("Java,Defect,Jira,Automation,Intellij,Page Object Model,Selenium");
 //        resultPage.assignRanking("CRAM,Creditunderwriting,corporateloans,corporaterating,creditrating,creditassessment,creditanalysis,creditrisk,creditriskanalysis");
 //        resultPage.assignRanking("coreJava,springboot,SQL,j2ee,java");
         resultPage.sortByRanking();
@@ -208,7 +225,7 @@ public class SearchFlow {
 
     }
 
-    public void get0103(){
+    public void downloadResumesOf(int candidateCount){
 //        resultPage.filterRecordsByLocation();
 
 //
@@ -217,12 +234,24 @@ public class SearchFlow {
 //            resultPage.clickOnNameByIndex(k);
 //            profileFlow.profileGet101();
 //        }
+        int count=0;
         for (Map.Entry<Integer, DataEntry> entry : sortedData.entrySet()) {
             int key = entry.getKey();
             DataEntry dataEntry = entry.getValue();
-            if(dataEntry.getRanking()>=1){
-                resultPage.navigateToUrlProfile(dataEntry.getNameLink());
-                profileFlow.profileGet102();
+            if(dataEntry.getRanking() >= 1 && dataEntry.getIsProfileViewed().equalsIgnoreCase("false") && dataEntry.getIsCommentAdded().equalsIgnoreCase("false")){
+                count++;
+                System.out.println(dataEntry.getRanking());
+                System.out.println(dataEntry.getIsCommentAdded());
+                System.out.println(dataEntry.getIsProfileViewed());
+                System.out.println(dataEntry.getName());
+                System.out.println(dataEntry.getNameLink());
+
+
+             //   resultPage.navigateToUrlProfile(dataEntry.getNameLink());
+               // profileFlow.profileGet102();
+            }
+            if(count == candidateCount) {
+                break;
             }
         }
 

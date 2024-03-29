@@ -2,6 +2,7 @@ package com.resume.web.locators.search;
 
 import com.resume.lib.base.CommonUiBase;
 import com.resume.lib.base.GlobalConstant;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class SearchLocators extends CommonUiBase {
 
-    private WebDriver driver;
+    private final WebDriver driver;
     public SearchLocators(WebDriver driver){
         System.out.println(driver);
         this.driver = driver;
@@ -28,7 +29,7 @@ public class SearchLocators extends CommonUiBase {
     @FindBy(xpath = "//div[contains(@class,'keywords')]//span[@class='ts-slider']")
     private WebElement slideBoolean;
 
-    @FindBy(xpath = "//button[text()='Search Candidates']")
+    @FindBy(xpath = "//button[@id='adv-search-btn']")
     private WebElement searchCandidates;
 
     @FindBy(xpath = "//input[@name='minExp']")
@@ -113,6 +114,7 @@ public class SearchLocators extends CommonUiBase {
     }
 
     public void clickOnAddExcludeKeywords(){
+        scrollToWebElement(driver,addExcludeKeywords);
         awaitForElementToBeClickable(driver, addExcludeKeywords, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         addExcludeKeywords.click();
     }
@@ -124,16 +126,19 @@ public class SearchLocators extends CommonUiBase {
     }
 
     public void enterMinExperience(String value){
+        scrollToWebElement(driver,maxExperience);
         awaitForElementPresence(driver, minExperience, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         minExperience.sendKeys(value);
     }
 
     public void enterMaxExperience(String value){
+
         awaitForElementPresence(driver, maxExperience, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         maxExperience.sendKeys(value);
     }
 
     public void enterLocations(String value){
+        scrollToWebElement(driver,locations);
         awaitForElementPresence(driver, locations, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         locations.sendKeys(value);
         locations.sendKeys(Keys.ENTER);
@@ -145,11 +150,18 @@ public class SearchLocators extends CommonUiBase {
     }
 
     public void clickOnIncludeCandidatesCheckbox(){
+        scrollToWebElement(driver,preferToRelocateCheckbox);
         awaitForElementToBeClickable(driver, preferToRelocateCheckbox, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         preferToRelocateCheckbox.click();
     }
+    public void scrollWebpagBy(String xAxis,String yAxis){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy("+xAxis+","+yAxis+")", "");
+    waitForSeconds(1);
+}
 
     public void enterMinSalary(String value){
+        scrollToWebElement(driver,minimumSalary);
         awaitForElementPresence(driver, minimumSalary, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         minimumSalary.sendKeys(value);
     }
@@ -160,19 +172,20 @@ public class SearchLocators extends CommonUiBase {
     }
 
     public void clickOnEmploymentDetails(){
-        awaitForElementToBeClickable(driver, employmentDetails, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         scrollToWebElement(driver, employmentDetails);
+        awaitForElementToBeClickable(driver, employmentDetails, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         employmentDetails.click();
     }
 
     public void clickOnNoticeServicePeriod(int index){
         awaitForWebElementListLoad(noticePeriodList, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
+        scrollToWebElement(driver, noticePeriodList.get(index));
         noticePeriodList.get(index).click();
     }
 
     public void clickOnDiversityDetails(){
-        awaitForElementToBeClickable(driver, diversityDetails, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         scrollToWebElement(driver, diversityDetails);
+        awaitForElementToBeClickable(driver, diversityDetails, GlobalConstant.MAX_TIMEOUT_IN_SECONDS);
         diversityDetails.click();
     }
 

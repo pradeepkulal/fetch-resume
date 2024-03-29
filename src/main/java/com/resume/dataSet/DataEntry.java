@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain=true)
 public class DataEntry {
 
+    
     private String name;
     private String experience;
     private String annualSalary;
@@ -24,5 +25,22 @@ public class DataEntry {
     private String email;
     private File resumeFile;
     private String nameLink;
+    private String isProfileViewed;
+    private  String isCommentAdded;
 
+
+
+//    public void setIsProfileViewed(String s) {
+//        this.isProfileViewed = isProfileViewed;
+//    }
+//    public boolean getIsProfileViewed(){
+//        return isProfileViewed;
+//    }
+//    public void setIsCommentAdded(String s) {
+//        this.isCommentAdded = isCommentAdded;
+//
+//    }
+//    public boolean getIsCommentAdded(){
+//        return isProfileViewed;
+//    }
 }

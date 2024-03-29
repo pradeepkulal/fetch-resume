@@ -39,16 +39,17 @@ public class Script1 {
 
     @Test
     public void tc1()throws Exception{
-        loginFlow.login("","");
-        Thread.sleep(10000);
+      //  loginFlow.login("swetha@intuitiveapps.com","Mar@2024");
+        //Thread.sleep(10000);
         driver.get("https://resdex.naukri.com/v3");
         searchFlow.searchQuery101();
-        Thread.sleep(60000);
+      //  Thread.sleep(60000);
         searchFlow.get0102();
-        searchFlow.get0103();
+        searchFlow.downloadResumesOf(4);
         try {
             Thread.sleep(100000000);
         }catch (Exception e){
+            System.out.println("----------------------------");
         }
     }
 

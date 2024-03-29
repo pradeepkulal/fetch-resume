@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginLocators extends CommonUiBase {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public LoginLocators(WebDriver driver){
         System.out.println(driver);
